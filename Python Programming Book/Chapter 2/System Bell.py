@@ -1,0 +1,3 @@
+# System Bell
+
+print("\a")

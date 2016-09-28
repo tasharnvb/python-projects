@@ -3,7 +3,7 @@
 
 # Pg 246, Challenge No. 1
 # Improve the Critter Caretaker by allowing the
-# user to specify how much food they feed the 
+# user to specify how much food they feed the
 # critter and how long they play with the critter
 
 class Critter(object):
@@ -29,11 +29,11 @@ class Critter(object):
         else:
             m = "mad"
         return m
-    
+
     def talk(self):
         print("I'm", self.name, "and I feel", self.mood, "now.\n")
         self.__pass_time()
-    
+
     def eat(self, food = 4):
         print("Brruppp.  Thank you.")
         self.hunger -= food
@@ -72,18 +72,18 @@ def main():
     crit_name = input("What do you want to name your critter?: ")
     crit = Critter(crit_name)
 
-    choice = None  
+    choice = None
     while choice != "0":
         print \
         ("""
         Critter Caretaker
-    
+
         0 - Quit
         1 - Listen to your critter
         2 - Feed your critter
         3 - Play with your critter
         """)
-    
+
         choice = input("Choice: ")
         print()
 
@@ -94,20 +94,20 @@ def main():
         # listen to your critter
         elif choice == "1":
             crit.talk()
-        
+
         # feed your critter
         elif choice == "2":
-            amount(choice)
-            crit.eat()
-         
+            food_amount = amount(choice)
+            crit.eat(food_amount)
+
         # play with your critter
         elif choice == "3":
-            amount(choice)
-            crit.play()
+            play_length = amount(choice)
+            crit.play(play_length)
 
         # some unknown choice
         else:
             print("\nSorry, but", choice, "isn't a valid choice.")
 
 main()
-("\n\nPress the enter key to exit.") 
+input("\n\nPress the enter key to exit.")

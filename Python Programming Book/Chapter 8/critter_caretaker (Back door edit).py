@@ -14,11 +14,11 @@ class Critter(object):
 
     def __str__(self):
         """Displays current object information"""
-        rep = "Critter Object\n"
-        rep += "name: " + self.name + "\n"
-        rep += "hunger: " + str(self.hunger) + "\n"
-        rep += "boredom: " + str(self.boredom) + "\n"
-        return rep
+        info = "Critter Object\n"
+        info += "name: " + self.name + "\n"
+        info += "hunger: " + str(self.hunger) + "\n"
+        info += "boredom: " + str(self.boredom) + "\n"
+        return info
 
     def __pass_time(self):
         self.hunger += 1
@@ -36,11 +36,11 @@ class Critter(object):
         else:
             m = "mad"
         return m
-    
+
     def talk(self):
         print("I'm", self.name, "and I feel", self.mood, "now.\n")
         self.__pass_time()
-    
+
     def eat(self, food = 4):
         print("Brruppp.  Thank you.")
         self.hunger -= food
@@ -79,18 +79,18 @@ def main():
     crit_name = input("What do you want to name your critter?: ")
     crit = Critter(crit_name)
 
-    choice = None  
+    choice = None
     while choice != "0":
         print \
         ("""
         Critter Caretaker
-    
+
         0 - Quit
         1 - Listen to your critter
         2 - Feed your critter
         3 - Play with your critter
         """)
-    
+
         choice = input("Choice: ")
         print()
 
@@ -101,16 +101,16 @@ def main():
         # listen to your critter
         elif choice == "1":
             crit.talk()
-        
+
         # feed your critter
         elif choice == "2":
-            amount(choice)
-            crit.eat()
-         
+            food_amount = amount(choice)
+            crit.eat(food_amount)
+
         # play with your critter
         elif choice == "3":
-            amount(choice)
-            crit.play()
+            play_length = amount(choice)
+            crit.play(play_length)
 
         # display object attribute information
         elif choice == "92":
@@ -121,4 +121,4 @@ def main():
             print("\nSorry, but", choice, "isn't a valid choice.")
 
 main()
-("\n\nPress the enter key to exit.") 
+input("\n\nPress the enter key to exit.")

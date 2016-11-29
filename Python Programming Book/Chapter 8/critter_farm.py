@@ -5,7 +5,10 @@
 # Create a Critter Farm program by instantiating several
 # Critter objects and keeping track of them through a list.
 # Each menu option should allow the user to perform an
-# action for all of the critters.
+# action for all of the critters. Also give all of the critters
+# random starting hungerand boredom levels.
+
+import random
 
 class Critter(object):
     """A virtual pet"""
@@ -77,18 +80,21 @@ def amount(choice):
             break
     return number
 
+def rng():
+    return int(random.randrange(11))
+
 def main():
     # The farm is empty at first
     farm = []
 
     crit1_name = input("What do you want to name your first critter?: ")
-    crit1 = Critter(crit1_name)
+    crit1 = Critter(crit1_name, rng(), rng())
 
     crit2_name = input("What do you want to name your second critter?: ")
-    crit2 = Critter(crit2_name)
+    crit2 = Critter(crit2_name, rng(), rng())
 
     crit3_name = input("What do you want to name your third critter?: ")
-    crit3 = Critter(crit3_name)
+    crit3 = Critter(crit3_name, rng(), rng())
 
     farm.append(crit1)
     farm.append(crit2)
@@ -98,7 +104,7 @@ def main():
     while choice != "0":
         print \
         ("""
-        Critter Caretaker
+        Critter Farmer
 
         0 - Quit
         1 - Listen to your critters

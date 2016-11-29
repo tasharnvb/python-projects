@@ -81,6 +81,7 @@ def amount(choice):
     return number
 
 def rng():
+    """Returns a random number between 0 and 10 (including 0 and 10)"""
     return int(random.randrange(11))
 
 def main():

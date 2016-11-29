@@ -122,25 +122,25 @@ def main():
 
         # listen to your critters
         elif choice == "1":
-            for i in range(len(farm)):
-                farm[i].talk()
+            for critter in farm:
+                critter.talk()
 
         # feed your critters
         elif choice == "2":
             food_amount = amount(choice)
-            for i in range(len(farm)):
-                farm[i].eat(food_amount)
+            for critter in farm:
+                critter.eat(food_amount)
 
         # play with your critters
         elif choice == "3":
             play_length = amount(choice)
-            for i in range(len(farm)):
-                farm[i].play(play_length)
+            for critter in farm:
+                critter.play(play_length)
 
         # display object attribute information
         elif choice == "92":
-            for i in range(len(farm)):
-                print(farm[i])
+            for critter in farm:
+                print(critter)
 
         # some unknown choice
         else:

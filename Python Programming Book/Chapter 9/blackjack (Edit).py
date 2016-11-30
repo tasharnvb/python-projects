@@ -187,7 +187,7 @@ def main():
     names = []
     number = games.ask_number("How many players? (1 - 7): ", low = 1, high = 8)
     for i in range(number):
-        name = input("Enter player name: ")
+        name = input("Enter player " + str(i + 1) + " name: ")
         names.append(name)
     print()
 

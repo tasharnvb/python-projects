@@ -125,7 +125,7 @@ class BJ_Game(object):
         return sp
 
     def __additional_cards(self, player):
-        while not player.is_busted() and player.is_hitting():
+        while not player.is_busted() and player.is_hitting() and self.deck:
             self.deck.deal([player])
             print(player)
             if player.is_busted():

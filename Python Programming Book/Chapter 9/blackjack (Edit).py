@@ -135,7 +135,7 @@ class BJ_Game(object):
         # Check that the deck has enough cards in it
         deck_size = len(self.deck.cards)
         n_players = len(self.players) + 1
-        if n_players * 2 <= deck_size:
+        if n_players * 2 >= deck_size:
             self.deck.clear()
             self.deck.populate()
             self.deck.shuffle()

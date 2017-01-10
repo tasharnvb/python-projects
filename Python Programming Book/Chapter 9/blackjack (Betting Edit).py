@@ -2,8 +2,8 @@
 # From 1 to 7 players compete against a dealer
 
 # Pg 283, Challenge No. 3
-# Improve the Blackjack game by allowing players to bet.
-# Keep track of each player's moeny and remove any player who runs out of money 
+# Improve the Blackjack game by allowing players to bet
+# Keep track of each player's moeny and remove any player who runs out of money
 
 import cards, games
 
@@ -51,7 +51,7 @@ class BJ_Hand(cards.Hand):
         # add up card values, treat each Ace as 1
         t = 0
         for card in self.cards:
-              t += card.value
+            t += card.value
 
         # determine if hand contains an Ace
         contains_ace = False
@@ -72,6 +72,15 @@ class BJ_Hand(cards.Hand):
 
 class BJ_Player(BJ_Hand):
     """ A Blackjack Player. """
+    def __init__(self, name):
+        super(BJ_Player, self).__init__(name)
+        self.money = 20
+        self.current_bet = None
+
+    def __str__(self):
+        rep = super(BJ_Player, self).__str__() + "\t\tMoney: " + str(self.money)
+        return rep
+
     def is_hitting(self):
         response = games.ask_yes_no("\n" + self.name + ", do you want a hit? (Y/N): ")
         return response == "y"
@@ -88,6 +97,21 @@ class BJ_Player(BJ_Hand):
 
     def push(self):
         print(self.name, "pushes.")
+
+    def bet(self):
+        while self.current_bet == None:
+            self.current_bet = games.ask_yes_no("\n" + self.name + ", how much would you like to bet? (Money left:" + str(self.money) + "): ")
+
+            try:
+                self.current_bet = float(self.current_bet)
+            except (TypeError, ValueError):
+                print("Please only enter numbers")
+                self.current_bet = None
+
+            if self.current_bet != None:
+                if self.current_bet > self.money:
+                    print("You do not have enough money to make that bet. Please try again")
+                    self.current_bet = None
 
 
 class BJ_Dealer(BJ_Hand):
@@ -142,7 +166,7 @@ class BJ_Game(object):
             self.deck.shuffle()
 
         # deal initial 2 cards to everyone
-        self.deck.deal(self.players + [self.dealer], per_hand = 2)
+        self.deck.deal(self.players + [self.dealer], per_hand=2)
         self.dealer.flip_first_card()    # hide dealer's first card
         for player in self.players:
             print(player)
@@ -176,9 +200,11 @@ class BJ_Game(object):
                     else:
                         player.push()
 
-        # remove everyone's cards
+        # remove everyone's cards and remove players with no money left
         for player in self.players:
             player.clear()
+            if player.money <= 0:
+                self.players.remove(player)
         self.dealer.clear()
 
 
@@ -186,7 +212,7 @@ def main():
     print("\t\tWelcome to Blackjack!\n")
 
     names = []
-    number = games.ask_number("How many players? (1 - 7): ", low = 1, high = 8)
+    number = games.ask_number("How many players? (1 - 7): ", low=1, high=8)
     for i in range(number):
         name = input("Enter player " + str(i + 1) + " name: ")
         names.append(name)

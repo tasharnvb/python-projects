@@ -92,6 +92,7 @@ class BJ_Player(BJ_Hand):
     def lose(self):
         print(self.name, "loses.")
         self.money -= self.current_bet
+        round(self.money, 2)
         if self.money <= 0:
             print(self.name, "is out of money!")
 
@@ -101,6 +102,7 @@ class BJ_Player(BJ_Hand):
             self.money += self.current_bet * 1.5
         else:
             self.money += self.current_bet
+            round(self.money, 2)
 
     def push(self):
         print(self.name, "pushes.")
@@ -116,6 +118,7 @@ class BJ_Player(BJ_Hand):
                 self.current_bet = None
 
             if self.current_bet != None:
+                self.current_bet = round(self.current_bet, 2)
                 if self.current_bet < minimum_bet:
                     print("You cannot bet lower than the minimum")
                     self.current_bet = None

@@ -2,7 +2,7 @@
 
 This is what I have done while trying to learn Python.
 
-I have mainly been reading a Python book called *__Python Programming for the Absolute Beginner__* (Third Edition) written by Micheal Dawson.
+I have mainly been reading a Python book called [*__Python Programming for the Absolute Beginner__*](http://amzn.eu/94o84Zl) (Third Edition) written by Michael Dawson.
 
 These directories refer to the chapters in the book and they contain my answers to the challenges set in each chapter.
 
@@ -16,6 +16,7 @@ These directories refer to the chapters in the book and they contain my answers 
 |    6    |                     Functions                     |
 |    7    |               Files and Exceptions                |
 |    8    |                      Objects                      |
+|    9    |            Object Oriented Programming            |
 
 --
 

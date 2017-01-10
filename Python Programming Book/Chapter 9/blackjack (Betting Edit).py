@@ -74,11 +74,11 @@ class BJ_Player(BJ_Hand):
     """ A Blackjack Player. """
     def __init__(self, name):
         super(BJ_Player, self).__init__(name)
-        self.money = 20
+        self.money = 20.0
         self.current_bet = None
 
     def __str__(self):
-        rep = super(BJ_Player, self).__str__() + "\t\tMoney: " + str(self.money)
+        rep = super(BJ_Player, self).__str__() + "\t\tBet: " + str(self.current_bet)
         return rep
 
     def is_hitting(self):
@@ -91,16 +91,23 @@ class BJ_Player(BJ_Hand):
 
     def lose(self):
         print(self.name, "loses.")
+        self.money -= self.current_bet
+        if self.money <= 0:
+            print(self.name, "is out of money!")
 
     def win(self):
         print(self.name, "wins.")
+        if self.total == 21:
+            self.money += self.current_bet * 1.5
+        else:
+            self.money += self.current_bet
 
     def push(self):
         print(self.name, "pushes.")
 
-    def bet(self):
+    def bet(self, minimum_bet):
         while self.current_bet == None:
-            self.current_bet = games.ask_yes_no("\n" + self.name + ", how much would you like to bet? (Money left:" + str(self.money) + "): ")
+            self.current_bet = input("\n" + self.name + ", how much would you like to bet? (Money: " + str(self.money) + ", Minimum bet: " + str(minimum_bet) + "): ")
 
             try:
                 self.current_bet = float(self.current_bet)
@@ -109,8 +116,11 @@ class BJ_Player(BJ_Hand):
                 self.current_bet = None
 
             if self.current_bet != None:
-                if self.current_bet > self.money:
-                    print("You do not have enough money to make that bet. Please try again")
+                if self.current_bet < minimum_bet:
+                    print("You cannot bet lower than the minimum")
+                    self.current_bet = None
+                elif self.current_bet > self.money:
+                    print("You do not have enough money to make that bet. Please try again with a lower bet")
                     self.current_bet = None
 
 
@@ -140,6 +150,7 @@ class BJ_Game(object):
         self.deck = BJ_Deck()
         self.deck.populate()
         self.deck.shuffle()
+        self.minimum_bet = 1.0
 
     @property
     def still_playing(self):
@@ -164,6 +175,10 @@ class BJ_Game(object):
             self.deck.clear()
             self.deck.populate()
             self.deck.shuffle()
+
+        # take each player's bet
+        for player in self.players:
+            player.bet(self.minimum_bet)
 
         # deal initial 2 cards to everyone
         self.deck.deal(self.players + [self.dealer], per_hand=2)
@@ -203,6 +218,7 @@ class BJ_Game(object):
         # remove everyone's cards and remove players with no money left
         for player in self.players:
             player.clear()
+            player.current_bet = None
             if player.money <= 0:
                 self.players.remove(player)
         self.dealer.clear()
@@ -223,7 +239,12 @@ def main():
     again = None
     while again != "n":
         game.play()
-        again = games.ask_yes_no("\nDo you want to play again?: ")
+        # Check if there are still players with money left
+        if len(game.players) > 0:
+            again = games.ask_yes_no("\nDo you want to play again?: ")
+        else:
+            print("\n\nAll players are out of money! Better luck next time!")
+            again = "n"
 
 
 main()

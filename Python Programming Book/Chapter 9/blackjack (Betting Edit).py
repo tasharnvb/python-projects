@@ -164,11 +164,14 @@ class BJ_Game(object):
         return sp
 
     def __additional_cards(self, player):
-        while not player.is_busted() and player.is_hitting() and self.deck:
-            self.deck.deal([player])
-            print(player)
-            if player.is_busted():
-                player.bust()
+        while not player.is_busted() and player.is_hitting():
+            if self.deck.cards:
+                self.deck.deal([player])
+                print(player)
+                if player.is_busted():
+                    player.bust()
+            else:
+                print("Additional cards cannot be dealt as the deck is out of cards")
 
     def play(self):
         # Check that the deck has enough cards in it

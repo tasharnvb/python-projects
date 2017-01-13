@@ -17,6 +17,7 @@ These directories refer to the chapters in the book and they contain my answers 
 |    7    |               Files and Exceptions                |
 |    8    |                      Objects                      |
 |    9    |            Object Oriented Programming            |
+|   10    |                  GUI Development                  |
 
 --
 
@@ -24,4 +25,8 @@ These directories refer to the chapters in the book and they contain my answers 
 
 * Most of the code is provided with the book (although the source files are not included here) so a fair amount of this code was adapted to complete the challenges.
 
-* I plan to rename these folders so that it is clear what was focused on in each chapter without the use of the table.
+### To-do
+
+* Rename these folders so that it is clear what was focused on in each chapter without the use of the table.
+* Add readme files to each folder describing what each file is (Maybe just describing the challenge?)
+* Refactor code (where appropriate) so that it follows the PEP-8 style guide

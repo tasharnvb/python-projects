@@ -53,14 +53,23 @@ class Application(Frame):
         self.display_bill(total)
 
     def calculate_total(self):
+        """Calculate the total of the user's bill"""
         total = 0
         for item in self.bill:
             total += self.menu[item]["price"]
-            
+
         return total
 
     def display_bill(self, total):
-        pass
+        """Display the user's bill including the total"""
+        response = ""
+        for item in self.bill:
+            response += item + " - " + str(self.menu[item]["price"]) + "\n"
+
+        response += "Total: " + str(total)
+
+        self.txt_output.delete(0.0, END)
+        self.txt_output.insert(0.0, response)
 
     def pay(self):
         """do nothing (would allow for a payment system to be implementes in the future)."""

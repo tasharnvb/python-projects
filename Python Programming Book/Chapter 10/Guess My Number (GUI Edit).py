@@ -12,8 +12,9 @@ class Application(Frame):
         self.grid()
 
         # setup the values that will be used in the game
+        self.TRIES = 10
         self.the_number = random.randint(1, 100)
-        self.remaining_tries = 10
+        self.remaining_tries = self.TRIES
 
         self.create_widgets()
 
@@ -27,11 +28,11 @@ class Application(Frame):
 
         # create label and text entry for the user's guess
         Label(self, text = "Enter you guess:").grid(row = 2, column = 0, sticky = W)
-        self.ent_user_guess = Entry()
+        self.ent_user_guess = Entry(self)
         self.ent_user_guess.grid(row = 2, column = 1, sticky = W)
 
         # create button to allow to user to submit their guess
-        Button(self, text = "Submit guess", command = self.submit_guess()).grid(row = 2, column = 2)
+        Button(self, text = "Submit guess", command = self.submit_guess).grid(row = 2, column = 2)
 
         # create text area for the output/result of the guess
         self.txt_output = Text(self, width = 35, height = 5, wrap = WORD)
@@ -47,17 +48,27 @@ class Application(Frame):
         response += "\n"
 
         if user_guess == self.the_number:
-            response = "You guessed it!\nAnd it only took you " + str(self.remaining_tries) + "tries"
+            response = "You guessed it!\nAnd it only took you " + str(self.TRIES - self.remaining_tries) +  " tries"
         elif user_guess > self.the_number:
             response += "Lower..."
+            self.remaining_tries -= 1
         elif user_guess < self.the_number:
             response += "Higher..."
+            self.remaining_tries -= 1
         else:
             response += "Something's not right here..."
 
-        self.remaining_tries -= 1
         if self.remaining_tries <= 0:
             response += "\n\nSorry, you're out of tries. Better luck next time!."
 
         self.txt_output.delete(0.0, END)
         self.txt_output.insert(0.0, response)
+
+# main
+root = Tk()
+root.title("Guess My Number")
+# root.geometry("300x150")
+
+app = Application(root)
+
+root.mainloop()

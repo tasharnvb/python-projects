@@ -44,6 +44,18 @@ class Application(Frame):
 
     def update_bill(self):
         """Update the user's bill."""
+        for item in self.menu:
+            if self.menu[item]["selected"]  == True:
+                if item not in self.bill:
+                    self.bill.append(item)
+
+        total = self.calculate_total()
+        self.display_bill(total)
+
+    def calculate_total(self):
+        pass
+
+    def display_bill(self, total):
         pass
 
     def pay(self):

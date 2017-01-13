@@ -10,6 +10,11 @@ class Application(Frame):
         """Initialize the frame"""
         super(Application, self).__init__(master)
         self.grid()
+
+        # setup the values that will be used in the game
+        self.the_number = random.randint(1, 100)
+        self.remaining_tries = 10
+
         self.create_widgets()
 
     def create_widgets(self):
@@ -18,7 +23,7 @@ class Application(Frame):
         Label(self, text = "Welcome to Guess My Number!").grid(row = 0, column = 0, columnspan = 2, sticky = W)
 
         # create instruction label
-        Label(self, text = "I'm thinking of a number between 1 and 100. Try to guess it in as few attempts as possible.").grid(row = 1, column = 0, columnspan = 2, sticky = W)
+        Label(self, text = "I'm thinking of a number between (and including) 1 and 100. Try to guess it in as few attempts as possible.").grid(row = 1, column = 0, columnspan = 2, sticky = W)
 
         # create label and text entry for the user's guess
         Label(self, text = "Enter you guess:").grid(row = 2, column = 0, sticky = W)
@@ -42,7 +47,7 @@ class Application(Frame):
         response += "\n"
 
         if user_guess == self.the_number:
-            response = "You guessed it!\nAnd it only took you " + str(self.tries) + "tries"
+            response = "You guessed it!\nAnd it only took you " + str(self.remaining_tries) + "tries"
         elif user_guess > self.the_number:
             response += "Lower..."
         elif user_guess < self.the_number:
@@ -51,34 +56,5 @@ class Application(Frame):
             response += "Something's not right here..."
 
         self.remaining_tries -= 1
-        if remaining_tries <= 0:
+        if self.remaining_tries <= 0:
             response += "\n\nSorry, you're out of tries. Better luck next time!."
-
-# print("\tWelcome to 'Guess My Number'!") # Label 1
-# print("\nI'm thinking of a number between 1 and 100.") # Label 2
-# print("Try to guess it in as few attempts as possible.\n")
-#
-# # set the initial values
-# the_number = random.randint(1, 100)
-# guess = int(input("Take a guess: ")) # Label 3 + Text entru 1
-# tries = 10
-#
-# # guessing loop
-# while guess != the_number:
-#     if guess > the_number:
-#         print("Lower...") # Text area 1
-#     else:
-#         print("Higher...") # Text area 1
-#     tries -= 1
-#     if tries <= 0:
-#         break
-#     guess = int(input("Take a guess: "))
-#
-# if guess == the_number:
-# 	print("You guessed it!  The number was", the_number)
-# 	print("And it only took you", tries, "tries!\n")
-#
-# elif tries <= 0:
-# 	print("\nSorry, you're out of tries. Better luck next time!.")
-#
-# input("\n\nPress the enter key to exit.") # Uneeded?

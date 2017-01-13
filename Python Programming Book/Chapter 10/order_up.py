@@ -53,7 +53,11 @@ class Application(Frame):
         self.display_bill(total)
 
     def calculate_total(self):
-        pass
+        total = 0
+        for item in self.bill:
+            total += self.menu[item]["price"]
+            
+        return total
 
     def display_bill(self, total):
         pass

@@ -22,18 +22,37 @@ class Application(Frame):
 
         # create label and text entry for the user's guess
         Label(self, text = "Enter you guess:").grid(row = 2, column = 0, sticky = W)
-        ent_user_guess = Entry()
-        ent_user_guess.grid(row = 2, column = 1, sticky = W)
+        self.ent_user_guess = Entry()
+        self.ent_user_guess.grid(row = 2, column = 1, sticky = W)
 
         # create button to allow to user to submit their guess
         Button(self, text = "Submit guess", command = self.submit_guess()).grid(row = 2, column = 2)
 
         # create text area for the output/result of the guess
-        txt_output = Text()
-        txt_output.grid(row = 3, column = 0, columnspan = 2, sticky = W)
+        self.txt_output = Text()
+        self.txt_output.grid(row = 3, column = 0, columnspan = 2, sticky = W)
 
     def submit_guess(self):
-        pass
+        """Check whether the user's guess was correct, higher or lower"""
+        user_guess = self.ent_user_guess.get()
+        # convert to integer for the comparison
+        user_guess = int(user_guess)
+
+        response = "Your guess: " + str(user_guess)
+        response += "\n"
+
+        if user_guess == self.the_number:
+            response = "You guessed it!\nAnd it only took you " + str(self.tries) + "tries"
+        elif user_guess > self.the_number:
+            response += "Lower..."
+        elif user_guess < self.the_number:
+            response += "Higher..."
+        else:
+            response += "Something's not right here..."
+
+        self.remaining_tries -= 1
+        if remaining_tries <= 0:
+            response += "\n\nSorry, you're out of tries. Better luck next time!."
 
 # print("\tWelcome to 'Guess My Number'!") # Label 1
 # print("\nI'm thinking of a number between 1 and 100.") # Label 2

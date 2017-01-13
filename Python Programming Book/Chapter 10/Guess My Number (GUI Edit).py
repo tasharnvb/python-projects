@@ -34,7 +34,7 @@ class Application(Frame):
         Button(self, text = "Submit guess", command = self.submit_guess()).grid(row = 2, column = 2)
 
         # create text area for the output/result of the guess
-        self.txt_output = Text()
+        self.txt_output = Text(self, width = 35, height = 5, wrap = WORD)
         self.txt_output.grid(row = 3, column = 0, columnspan = 2, sticky = W)
 
     def submit_guess(self):
@@ -58,3 +58,6 @@ class Application(Frame):
         self.remaining_tries -= 1
         if self.remaining_tries <= 0:
             response += "\n\nSorry, you're out of tries. Better luck next time!."
+
+        self.txt_output.delete(0.0, END)
+        self.txt_output.insert(0.0, response)

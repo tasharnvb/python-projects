@@ -12,9 +12,8 @@ class Application(Frame):
         super(Application, self).__init__(master)
         self.grid()
 
-        # a dictionary that will contain the items and prices for the restaurant
-        # example format -> {pizza : {"price" : 5.00, "selected" : False}}
-        self.menu = {"Pizza" : {"price" : 5.00, "selected" : False}, "Jerk Chicken" : {"price" : 6.50, "selected" : False}}
+        # a dictionary that contains the items and prices for the restaurant
+        self.menu = {"Pizza" : {"price" : 7.00, "selected" : False}, "Whole Chicken" : {"price" : 8.50, "selected" : False}, "Steak" : {"price" : 11.00, "selected" : False}}
         self.bill = []
 
         self.create_widgets()
@@ -45,9 +44,12 @@ class Application(Frame):
     def update_bill(self):
         """Update the user's bill."""
         for item in self.menu:
-            if self.menu[item]["selected"]  == True:
+            if self.menu[item]["selected"].get() == True:
                 if item not in self.bill:
                     self.bill.append(item)
+            elif self.menu[item]["selected"].get() == False:
+                if item in self.bill:
+                    self.bill.remove(item)
 
         total = self.calculate_total()
         self.display_bill(total)
@@ -66,13 +68,13 @@ class Application(Frame):
         for item in self.bill:
             response += item + " - " + str(self.menu[item]["price"]) + "\n"
 
-        response += "Total: " + str(total)
+        response += "\nTotal: " + str(total)
 
         self.txt_output.delete(0.0, END)
         self.txt_output.insert(0.0, response)
 
     def pay(self):
-        """do nothing (would allow for a payment system to be implementes in the future)."""
+        """do nothing (would allow for a payment system to be implemented in the future)."""
         pass
 
 # main

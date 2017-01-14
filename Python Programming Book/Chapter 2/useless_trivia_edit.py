@@ -1,4 +1,5 @@
-# Useless Trivia
+# Useless Trivia (Edit)
+#
 # My attempt at making the useless trivia program
 
 notice = "After entering your answers to the questions, press the enter key to continue"

@@ -1,3 +1,5 @@
+# Tipper
+#
 # Pg 47, Challenge No. 3
 #
 # Write a Tipper program where the user enters a restaurant bill total.

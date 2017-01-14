@@ -1,3 +1,5 @@
+# New Food
+#
 # Pg 47, Challenge No. 2
 #
 # Write a program that allows a user to enter his or her

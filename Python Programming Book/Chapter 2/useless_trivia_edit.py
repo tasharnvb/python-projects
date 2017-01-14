@@ -1,5 +1,5 @@
 # Useless Trivia
-# My first attempt at making the useless trivia program
+# My attempt at making the useless trivia program
 
 notice = "After entering your answers to the questions, press the enter key to continue"
 
@@ -11,7 +11,7 @@ age = input("\nHow old are you? ")
 age = int(age)
 
 # age = int(age) - this turns the string into an integer so
-# that python knows it as an integer
+# that python recognises it as an integer
 
 weight = input("\nOkay, this is my last question for you. "
                "How many pounds do you weigh? ")
@@ -21,8 +21,7 @@ weight = int(weight)
 
 print("""\n--------------------------------------------------------------------------""")
 
-print("\nIf poet ee cummings were to email you he would address you as",
-      name.lower() )
+print("\nIf poet ee cummings were to email you he would address you as", name.lower())
 
 print("\nBut if ee was mad at you, he'd call you", name.upper())
 

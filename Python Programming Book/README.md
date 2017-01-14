@@ -2,7 +2,7 @@
 
 This is what I have done while trying to learn Python.
 
-I have mainly been reading a Python book called [*__Python Programming for the Absolute Beginner__*](http://amzn.eu/94o84Zl) (Third Edition) written by Michael Dawson.
+I have mainly been reading a Python book called [**_Python Programming for the Absolute Beginner_**](http://amzn.eu/94o84Zl) (Third Edition) written by Michael Dawson.
 
 These directories refer to the chapters in the book and they contain my answers to the challenges set in each chapter.
 

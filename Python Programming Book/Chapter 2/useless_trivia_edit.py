@@ -1,6 +1,6 @@
 # Useless Trivia (Edit)
 #
-# My attempt at making the useless trivia program
+# My attempt at making the useless trivia program.
 
 notice = "After entering your answers to the questions, press the enter key to continue"
 
@@ -12,7 +12,7 @@ age = input("\nHow old are you? ")
 age = int(age)
 
 # age = int(age) - this turns the string into an integer so
-# that python recognises it as an integer
+# that python recognises it as an integer.
 
 weight = input("\nOkay, this is my last question for you. "
                "How many pounds do you weigh? ")
@@ -26,7 +26,7 @@ print("\nIf poet ee cummings were to email you he would address you as", name.lo
 
 print("\nBut if ee was mad at you, he'd call you", name.upper())
 
-# ee cummings was an american poet who didn't use uppercase letters
+# ee cummings was an american poet who didn't use uppercase letters.
 
 called = name * 5
 
@@ -45,8 +45,8 @@ moon_weight = weight / 6
 
 sun_weight = weight * 27.1
 
-# The moon only has 1/6th of the gravitational pull of earth
-# The suns gravitational pull is 27.1 times earths
+# The moon only has 1/6th of the gravitational pull of earth.
+# The suns gravitational pull is 27.1 times earths.
 
 print("\nDid you know that on the moon you would weigh", moon_weight, "pounds")
 

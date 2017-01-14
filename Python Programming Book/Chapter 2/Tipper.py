@@ -3,7 +3,7 @@
 # Pg 47, Challenge No. 3
 #
 # Write a Tipper program where the user enters a restaurant bill total.
-# The program should then display two amounts: a 15% and a 20% tip
+# The program should then display two amounts: a 15% and a 20% tip.
 
 print(
     """

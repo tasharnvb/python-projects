@@ -1,5 +1,5 @@
 # Game Over
 #
-# My very first python program
+# My very first python program.
 
 print("Game Over")

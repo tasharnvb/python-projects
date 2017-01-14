@@ -1,4 +1,9 @@
-# Pg 85, challenge no. 2
+# Coin Flipper
+#
+# Pg 85, Challenge No. 2
+#
+# Write a program that flips a coin 100 times ad then tells you
+# the number of tails and heads.
 
 import random
 

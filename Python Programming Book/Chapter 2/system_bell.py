@@ -1,5 +1,5 @@
 # System Bell
 #
-# This makes the system bell sound
+# This makes the system bell sound.
 
 print("\a")

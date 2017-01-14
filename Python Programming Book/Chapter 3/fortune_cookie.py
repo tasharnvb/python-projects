@@ -1,5 +1,10 @@
 # Fortune Cookie
-# Pg 85, challenge 1
+#
+# Pg 85, Challenge No. 1
+#
+# Write a program that simulates a fortune cookie.
+# The program should display one o five unique fortunes
+# at random each time it's run.
 
 import random
 
@@ -33,4 +38,3 @@ else:
     print("No fortune available")
 
 input("\n\nPress enter to exit")
-

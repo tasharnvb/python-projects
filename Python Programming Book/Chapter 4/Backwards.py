@@ -1,11 +1,17 @@
+# Backwards
+#
 # Pg 120, Challenge No. 2
+#
+# Create a program that gets a message from the user
+# and prints it out backwards
 
 print("\t\tBackwards")
 
 word = input("\n\nType in the word you want to see backwards ")
 
-position = -1   # The first letter of the word is at index 0,
-                     # index -1 is the last letter of the word 
+# The first letter of the word is at index 0,
+# index -1 is the last letter of the word
+position = -1
 backwards = ""
 
 for i in range(len(word)):
@@ -13,13 +19,11 @@ for i in range(len(word)):
     position -= 1
 
 # An alternate way to do this with a while loop
-
-#position = len(word) - 1   # Eg. if the word was 'test' then the length would be 4,
-                                      # but when counting we start at 0 so index 3 is the end
-                                      # of the word not 4
-#while position >= 0:
-#    backwards += word[position]
-#    position -= 1
+# position = len(word) - 1
+#
+# while position >= 0:
+#     backwards += word[position]
+#     position -= 1
 
 print("\nYour word backwards is: " + backwards)
 

@@ -1,9 +1,15 @@
-# Pg 155, Challenge No. 3 (With 2 extra options)
-#
 # Who's Your Daddy? (Grandfather Edition)
 #
-# A program that allows users to find
-# out someone's father (and grandfather) by entering the son's name
+# Pg 155, Challenge No. 4
+#
+# Improve the Who's Your Daddy? program by adding a choice that lets
+# the user enter a name and get back a grandfather. The program
+# should still only use one dictionary of son-father pairs.
+#
+# Note:
+#
+# While not required, I added the ability to change the grandfather
+# for a grandson-grandfather pair.
 
 # Setting up a dictionary to hold the father(grandfather)/son pairs
 # Note: It is in the format son:[father, grandfather]
@@ -12,7 +18,7 @@ pairs = {"World":["Hello", "Greetings"],
          "Gwyndolin":["Gwyn", "Unknown"],
          "Humanity":["Dark", "Manus"],
          "Sorcery":["Seath", "Unknown"]
-         }
+        }
 
 choice = None
 
@@ -52,7 +58,8 @@ while choice != "0":
             pairs[son] = father
             print(son, "has been added")
         else:
-            print("The son", son, "already exists! If you want to change the father's name for this son, then try replacing instead of adding.")
+            print("The son", son, "already exists! If you want to change the father's name for "
+                  "this son, then try replacing instead of adding.")
     # Change father (For specified son)
     elif choice == "3":
         son = input("What is the name of the son that you want to change the father of? ")
@@ -61,7 +68,7 @@ while choice != "0":
             pairs[son][0] = father
             print(son, "has been updated")
         else:
-            print("The son", son, "does not exist! Please try again with another name.")        
+            print("The son", son, "does not exist! Please try again with another name.")
     # Delete (father/grandfather)/son pair
     elif choice == "4":
         son = input("What is the name of the son of the pair that you want to delete? ")
@@ -91,10 +98,9 @@ while choice != "0":
             pairs[son][1] = grandfather
             print(son, "has been updated")
         else:
-            print("The son", son, "does not exist! Please try again with another name.")        
+            print("The son", son, "does not exist! Please try again with another name.")
     else:
         print(choice, "is not a valid choice! Please try again")
-        
+
 
 input("\n\nPress the enter key to close the program.")
-        

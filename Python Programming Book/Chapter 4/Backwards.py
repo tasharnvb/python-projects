@@ -3,7 +3,7 @@
 # Pg 120, Challenge No. 2
 #
 # Create a program that gets a message from the user
-# and prints it out backwards
+# and prints it out backwards.
 
 print("\t\tBackwards")
 

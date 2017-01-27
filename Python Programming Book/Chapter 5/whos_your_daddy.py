@@ -1,9 +1,15 @@
-# Pg 155, Challenge No. 3 (With an extra option)
-#
 # Who's Your Daddy?
 #
-# A program that allows users to find
-# out someone's father by entering the son's name
+# Pg 155, Challenge No. 3
+#
+# Write a Who's Your Daddy? program that lets the user enter
+# the name of a male and profuces the name of his father.
+# Allow the user to add, replace, and delete son-father pairs.
+#
+# Note:
+#
+# I added the ability to view all of names (sons) that can be
+# entered into the program.
 
 # Setting up a dictionary to hold the father/son pairs
 # Note: It is in the format son:father
@@ -12,7 +18,7 @@ pairs = {"World":"Hello",
          "Gwyndolin":"Gwyn",
          "Humanity":"Dark",
          "Sorcery":"Seath"
-         }
+        }
 
 choice = None
 
@@ -50,7 +56,8 @@ while choice != "0":
             pairs[son] = father
             print(son, "has been added")
         else:
-            print("The son", son, "already exists! If you want to change the father's name for this son, then try replacing instead of adding.")
+            print("The son", son, "already exists! If you want to change the father's name for "
+                  "this son, then try replacing instead of adding.")
     # Change father (For specified son)
     elif choice == "3":
         son = input("What is the name of the son that you want to change the father of? ")
@@ -59,7 +66,7 @@ while choice != "0":
             pairs[son] = father
             print(son, "has been updated")
         else:
-            print("The son", son, "does not exist! Please try again with another name.")        
+            print("The son", son, "does not exist! Please try again with another name.")
     # Delete father/son pair
     elif choice == "4":
         son = input("What is the name of the son of the pair that you want to delete? ")
@@ -75,7 +82,6 @@ while choice != "0":
             print(key)
     else:
         print(choice, "is not a valid choice! Please try again")
-        
+
 
 input("\n\nPress the enter key to close the program.")
-        

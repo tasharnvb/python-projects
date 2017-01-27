@@ -11,7 +11,7 @@
 
 import random
 
-print("\t\tGuess the word")
+print("\t\tGuess the Word")
 #print("Try to guess the word i'm thinking of")
 print("\nI'll tell you how many letters are in the word, then you'll"
       "\nhave 5 chances to ask whether a letter is in the word. After"
@@ -29,20 +29,20 @@ choice = random.choice(WORDS)
 # The length of the random word
 length = len(choice)
 # Used to keep track of how many letters the user has asked about
-questionNumber = 1
+question_number = 1
 
 # The game part of the game
 print("\n\nThere are", length, "letters in the word.")
 
-while questionNumber < 6:
+while question_number < 6:
     letter = ""
     while not letter:   # To force the user to pick a letter
-        letter = input("\n" + str(questionNumber) + ". Type a letter to see if it is in the word: ")
+        letter = input("\n" + str(question_number) + ". Type a letter to see if it is in the word: ")
     if letter.lower() in choice:    # Just in case the user types in a capital letter
         print("Yes.")
     else:
         print("No.")
-    questionNumber += 1
+    question_number += 1
 
 guess = ""
 while not guess:

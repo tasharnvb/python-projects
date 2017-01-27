@@ -6,7 +6,7 @@
 # limited number of guesses. If the player fails to guess in
 # time, the program should display an appropriate message.
 #
-# Notes:
+# Note:
 # The number of tries that the user took is incorrect if the
 # user guesses the number correctly. This is an easy fix but
 # I am leaving it unfixed for now.

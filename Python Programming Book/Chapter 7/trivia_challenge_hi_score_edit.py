@@ -1,9 +1,12 @@
 # Trivia Challenge (Edit)
 # Trivia game that reads a plain text file
-
+#
 # Pg 216, Challenge No. 2
-# Improve the Trivia Challenge so that it maintain a 
-# of high-scores in a file.
+#
+# Improve the Trivia Challenge game so that it maintains a
+# high-scores list in a file. The program should record the
+# player's name and score if the player makes the list.
+# Store the high scores using a pickled object.
 
 import sys
 import pickle
@@ -28,23 +31,23 @@ def next_line(the_file):
 def next_block(the_file):
     """Return the next block of data from the trivia file."""
     category = next_line(the_file)
-    
+
     question = next_line(the_file)
-    
+
     answers = []
     for i in range(4):
         answers.append(next_line(the_file))
-        
+
     correct = next_line(the_file)
     if correct:
         correct = correct[0]
-        
+
     explanation = next_line(the_file)
 
     value = next_line(the_file)
     try:
         value = int(value)
-    except ValueError as e:
+    except ValueError:
         # if category is not empty, then it is not the end of the game yet
         # meaning that the point value has not been set correctly.
         if category:
@@ -58,7 +61,7 @@ def welcome(title):
     """Welcome the player and get his/her name."""
     print("\t\tWelcome to Trivia Challenge!\n")
     print("\t\t", title, "\n")
- 
+
 def main():
     trivia_file = open_file("trivia.txt", "r")
     title = next_line(trivia_file)
@@ -108,7 +111,7 @@ def main():
         pickle.dump(default_scores, scores_file)
         scores_file.close()
         scores_file = open("scores.dat", "rb")
-        
+
     high_scores = pickle.load(scores_file)
     # code adapted from pg 137
     for entry in high_scores:
@@ -135,7 +138,7 @@ def main():
         print("\t", curr_name, "\t\t", curr_score)
 
     scores_file.close()
-            
- 
-main()  
+
+
+main()
 input("\n\nPress the enter key to exit.")

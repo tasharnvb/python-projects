@@ -1,11 +1,14 @@
 # Blackjack (Betting Edit)
 # From 1 to 7 players compete against a dealer
-
+#
 # Pg 283, Challenge No. 3
-# Improve the Blackjack game by allowing players to bet
-# Keep track of each player's moeny and remove any player who runs out of money
+#
+# Improve the Blackjack game by allowing players to bet.
+# Keep track of each player's money and remove any
+# player who runs out of money
 
-import cards, games
+import cards
+import games
 
 class BJ_Card(cards.Card):
     """ A Blackjack Card. """
@@ -108,8 +111,10 @@ class BJ_Player(BJ_Hand):
         print(self.name, "pushes.")
 
     def bet(self, minimum_bet):
-        while self.current_bet == None:
-            self.current_bet = input("\n" + self.name + ", how much would you like to bet? (Money: " + str(self.money) + ", Minimum bet: " + str(minimum_bet) + "): ")
+        while self.current_bet is None:
+            self.current_bet = input("\n" + self.name + ", how much would you like to bet? "
+                                     "(Money: " + str(self.money) + ", Minimum bet: "
+                                     + str(minimum_bet) + "): ")
 
             try:
                 self.current_bet = float(self.current_bet)
@@ -123,7 +128,8 @@ class BJ_Player(BJ_Hand):
                     print("You cannot bet lower than the minimum")
                     self.current_bet = None
                 elif self.current_bet > self.money:
-                    print("You do not have enough money to make that bet. Please try again with a lower bet")
+                    print("You do not have enough money to make that bet. Please "
+                          "try again with a lower bet")
                     self.current_bet = None
 
 

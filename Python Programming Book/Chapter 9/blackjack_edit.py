@@ -1,10 +1,14 @@
 # Blackjack (Edit)
 # From 1 to 7 players compete against a dealer
-
+#
 # Pg 283, Challenge No. 1
-# Add some error checking to the game
+#
+# Add some much needed error checking to the Blackjack game.
+# Before a new round begins, make sure that the deck has
+# enough cards. If not, repopulate and reshuffle it.
 
-import cards, games
+import cards
+import games
 
 class BJ_Card(cards.Card):
     """ A Blackjack Card. """
@@ -50,7 +54,7 @@ class BJ_Hand(cards.Hand):
         # add up card values, treat each Ace as 1
         t = 0
         for card in self.cards:
-              t += card.value
+            t += card.value
 
         # determine if hand contains an Ace
         contains_ace = False
@@ -144,7 +148,7 @@ class BJ_Game(object):
             self.deck.shuffle()
 
         # deal initial 2 cards to everyone
-        self.deck.deal(self.players + [self.dealer], per_hand = 2)
+        self.deck.deal(self.players + [self.dealer], per_hand=2)
         self.dealer.flip_first_card()    # hide dealer's first card
         for player in self.players:
             print(player)
@@ -188,7 +192,7 @@ def main():
     print("\t\tWelcome to Blackjack!\n")
 
     names = []
-    number = games.ask_number("How many players? (1 - 7): ", low = 1, high = 8)
+    number = games.ask_number("How many players? (1 - 7): ", low=1, high=8)
     for i in range(number):
         name = input("Enter player " + str(i + 1) + " name: ")
         names.append(name)

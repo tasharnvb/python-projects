@@ -1,8 +1,14 @@
 # War
-# 2 Players compete to win all of the cards
-
+#
 # Pg 283, Challenge No. 2
-# Write a one card version of the game War
+#
+# Write a one card version of the game War, where each
+# player gets a single card and the player with the
+# highest card wins.
+#
+# Note:
+# The blackjack game was the skeleton that was used
+# for this game.
 
 import cards
 import games

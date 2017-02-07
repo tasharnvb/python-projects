@@ -1,10 +1,16 @@
+# Guess My Number (Function Edit)
+#
 # Pg 188, Challenge No. 2
+#
+# Modify the Guess My Number chapter project from Chapter 3 by
+# reusing the function ask_number().
+#
+# Note:
 # This is an edit of the existing guess my number game from chapter 3.
-# In this edit, the ask_number function from the tic-tac-toe game is
-# reused. I did not write the function or the tic-tac-toe game and it
-# is from chapter 5.
+# I did not write the ask_number function, it was taken from the
+# tic-tac-toe game that was used as an example in this chapter.
 
-import random  
+import random
 
 def ask_number(question, low, high):
     """Ask for a number within a range."""
@@ -32,13 +38,12 @@ while guess != the_number:
     else:
         print("Higher...")
     guess = ask_number("Take a guess: ", 1, 100)
-		
-if guess == the_number:
-	print("You guessed it!  The number was", the_number)
-	print("And it only took you", tries, "tries!\n")
-	
-elif tries <= 0:
-	print("\nSorry, you're out of tries. Better luck next time!.")
-	
-input("\n\nPress the enter key to exit.")
 
+if guess == the_number:
+    print("You guessed it!  The number was", the_number)
+    print("And it only took you", tries, "tries!\n")
+
+elif tries <= 0:
+    print("\nSorry, you're out of tries. Better luck next time!.")
+
+input("\n\nPress the enter key to exit.")

@@ -1,14 +1,15 @@
 # Television
-# A virtual television
-
+#
 # Pg 246, Challenge No. 2
+#
 # Simulate a television by creating it as an object.
-# The user should be able to enter a channel number and raise/lower the volume.
+# The user should be able to enter a channel number and
+# raise/lower the volume.
 
 class Television(object):
     """A virtual television"""
     channels = [1, 2, 3, 4, 5]
-    def __init__(self, channel = 1, volume = 5):
+    def __init__(self, channel=1, volume=5):
         self.__channel = channel
         self.__volume = volume
 
@@ -20,6 +21,7 @@ class Television(object):
         return info
 
     def change_channel(self, new_channel):
+        """Change the TV's channel"""
         if int(new_channel) in self.channels:
             self.__channel = new_channel
             print("The tv is now on channel", new_channel)
@@ -27,6 +29,7 @@ class Television(object):
             print("The channel you have chosen does not exist. Please try another.")
 
     def raise_volume(self):
+        """Raise the TV's volume by 1"""
         if self.__volume < 10:
             self.__volume += 1
             print("The volume is now", self.__volume)
@@ -34,6 +37,7 @@ class Television(object):
             print("The volume is already at its maximum.")
 
     def lower_volume(self):
+        """Lower the TV's volume by 1"""
         if self.__volume > 0:
             self.__volume -= 1
             print("The volume is now", self.__volume)
@@ -41,6 +45,7 @@ class Television(object):
             print("The volume is already at its minimum.")
 
 def main():
+    """Create TV"""
     tv = Television()
     choice = None
     while choice != "0":

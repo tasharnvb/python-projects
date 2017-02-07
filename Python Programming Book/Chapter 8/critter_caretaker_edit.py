@@ -1,14 +1,19 @@
 # Critter Caretaker (Edit)
 # A virtual pet to care for
-
+#
 # Pg 246, Challenge No. 1
-# Improve the Critter Caretaker by allowing the
-# user to specify how much food they feed the
-# critter and how long they play with the critter
+#
+# Improve the Critter Caretaker by allowing the user to
+# specify how much food they feed the critter and how
+# long they play with the critter.
+#
+# Note:
+# I added the amount function to reduce the amount of
+# repetition that would've been introduced.
 
 class Critter(object):
     """A virtual pet"""
-    def __init__(self, name, hunger = 0, boredom = 0):
+    def __init__(self, name, hunger=0, boredom=0):
         self.name = name
         self.hunger = hunger
         self.boredom = boredom
@@ -34,14 +39,14 @@ class Critter(object):
         print("I'm", self.name, "and I feel", self.mood, "now.\n")
         self.__pass_time()
 
-    def eat(self, food = 4):
+    def eat(self, food=4):
         print("Brruppp.  Thank you.")
         self.hunger -= food
         if self.hunger < 0:
             self.hunger = 0
         self.__pass_time()
 
-    def play(self, fun = 4):
+    def play(self, fun=4):
         print("Wheee!")
         self.boredom -= fun
         if self.boredom < 0:
@@ -55,13 +60,13 @@ def amount(choice):
         phrase = "How much time do you want to spend playing with your critter?: "
     else:
         phrase = "Something went wrong here..."
-    number = ""
+    number = 0
     # Code adapted from here: http://stackoverflow.com/a/8114405
     while True:
         # This gives an infinite loop
         try:
             number = int(input(phrase))
-        except ValueError as e:
+        except ValueError:
             # The user did not enter a number
             print("Only numbers are accepted! Please try again.\n")
         else:

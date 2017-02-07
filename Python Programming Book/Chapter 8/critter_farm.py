@@ -1,18 +1,20 @@
 # Critter Farmer
-# A virtual farm to care for
-
+#
 # Pg 246, Challenge No. 4
+#
 # Create a Critter Farm program by instantiating several
 # Critter objects and keeping track of them through a list.
-# Each menu option should allow the user to perform an
-# action for all of the critters. Also give all of the critters
-# random starting hungerand boredom levels.
+# Mimic the Critter Caretaker program, but instead of requiring
+# the user to care for a single critter, require them to care
+# for an entire farm. Each menu option should allow the user
+# to perform an action for all of the critters; Also give all
+# of the critters random starting hunger and boredom levels.
 
 import random
 
 class Critter(object):
     """A virtual pet"""
-    def __init__(self, name, hunger = 0, boredom = 0):
+    def __init__(self, name, hunger=0, boredom=0):
         self.name = name
         self.hunger = hunger
         self.boredom = boredom
@@ -46,14 +48,14 @@ class Critter(object):
         print("I'm", self.name, "and I feel", self.mood, "now.\n")
         self.__pass_time()
 
-    def eat(self, food = 4):
+    def eat(self, food=4):
         print("Brruppp.  Thank you.")
         self.hunger -= food
         if self.hunger < 0:
             self.hunger = 0
         self.__pass_time()
 
-    def play(self, fun = 4):
+    def play(self, fun=4):
         print("Wheee!")
         self.boredom -= fun
         if self.boredom < 0:
@@ -67,13 +69,13 @@ def amount(choice):
         phrase = "How much time do you want to spend playing with your critters?: "
     else:
         phrase = "Something went wrong here..."
-    number = ""
+    number = 0
     # Code adapted from here: http://stackoverflow.com/a/8114405
     while True:
         # This gives an infinite loop
         try:
             number = int(input(phrase))
-        except ValueError as e:
+        except ValueError:
             # The user did not enter a number
             print("Only numbers are accepted! Please try again.\n")
         else:

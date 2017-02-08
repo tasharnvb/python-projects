@@ -1,12 +1,15 @@
+# Order Up!
+#
 # Pg 319, Challenge No. 3
 #
-# Create a GUI program called Order Up!, that presents the user with
-# a simple restarant menu, which lists items and prices.
-# Let the user select different items and then show the user the total bill
+# Create a GUI program called Order Up!, that presents the user
+# with a simple restarant menu, which lists items and prices.
+# Let the user select different items and then show the user
+# the total bill.
 
-from tkinter import *
+import tkinter as tk
 
-class Application(Frame):
+class Application(tk.Frame):
     """Order Up! restaurant application"""
     def __init__(self, master):
         """Initialize the frame."""
@@ -14,7 +17,9 @@ class Application(Frame):
         self.grid()
 
         # a dictionary that contains the items and prices for the restaurant
-        self.menu = {"Pizza" : {"price" : 7.00, "selected" : False}, "Whole Chicken" : {"price" : 8.50, "selected" : False}, "Steak" : {"price" : 11.00, "selected" : False}}
+        self.menu = {"Pizza" : {"price" : 7.00, "selected" : False},
+                     "Whole Chicken" : {"price" : 8.50, "selected" : False},
+                     "Steak" : {"price" : 11.00, "selected" : False}}
         self.bill = []
 
         self.create_widgets()
@@ -22,33 +27,35 @@ class Application(Frame):
     def create_widgets(self):
         """Create labels, entry, button and text widgets."""
         # create welcome label
-        Label(self, text = "Welcome to Order Up!").grid(row = 0, column = 0, columnspan = 2, sticky = W)
+        tk.Label(self, text="Welcome to Order Up!").grid(row=0, column=0, columnspan=2, sticky=tk.W)
 
         # create instruction label
-        Label(self, text = "Choose the item(s) that you would like from the menu").grid(row = 1, column = 0, columnspan = 2, sticky = W)
+        tk.Label(self, text="Choose the item(s) that you would like "
+                            "from the menu").grid(row=1, column=0, columnspan=2, sticky=tk.W)
 
         # create menu
-        Label(self, text = "Menu:").grid(row = 2, column = 0, sticky = W)
+        tk.Label(self, text="Menu:").grid(row=2, column=0, sticky=tk.W)
         col_num = 0
         for item in self.menu:
-            self.menu[item]["selected"] = BooleanVar()
-            Checkbutton(self, text = item, variable = self.menu[item]["selected"], command = self.update_bill).grid(row = 3, column = col_num, sticky = W)
+            self.menu[item]["selected"] = tk.BooleanVar()
+            tk.Checkbutton(self, text=item, variable=self.menu[item]["selected"],
+                           command=self.update_bill).grid(row=3, column=col_num, sticky=tk.W)
             col_num += 1
 
         # create button to allow to user to pay for their meal
-        Button(self, text = "Complete order", command = self.pay).grid(row = 4, column = 0)
+        tk.Button(self, text="Complete order", command=self.pay).grid(row=4, column=0)
 
         # create text area for the bill
-        self.txt_output = Text(self, width = 35, height = 10, wrap = WORD)
-        self.txt_output.grid(row = 5, column = 0, columnspan = 2, sticky = W)
+        self.txt_output = tk.Text(self, width=35, height=10, wrap=tk.WORD)
+        self.txt_output.grid(row=5, column=0, columnspan=2, sticky=tk.W)
 
     def update_bill(self):
         """Update the user's bill."""
         for item in self.menu:
-            if self.menu[item]["selected"].get() == True:
+            if self.menu[item]["selected"].get() is True:
                 if item not in self.bill:
                     self.bill.append(item)
-            elif self.menu[item]["selected"].get() == False:
+            elif self.menu[item]["selected"].get() is False:
                 if item in self.bill:
                     self.bill.remove(item)
 
@@ -71,7 +78,7 @@ class Application(Frame):
 
         response += "\nTotal: " + str(total)
 
-        self.txt_output.delete(0.0, END)
+        self.txt_output.delete(0.0, tk.END)
         self.txt_output.insert(0.0, response)
 
     def pay(self):
@@ -79,7 +86,7 @@ class Application(Frame):
         pass
 
 # main
-root = Tk()
+root = tk.Tk()
 root.title("Order Up!")
 # root.geometry("300x150")
 
